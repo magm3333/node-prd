@@ -4,10 +4,13 @@ var nPrd=nodePrd.createInstance(
 	{	
 		reportBundlePath: "/home/mariano/report.prpt",
 		outputFilePath: path.resolve("./out/report"),
-		outputType: "excelXlsx",
+		outputType: "excel",
 		htmlFolder:"salidaHtml",
 		params: [
-			{name : "minId", value : 4, type:"Integer"}
+			{name : "minId", value : 4, type:"Integer"},
+			{name : "title", value : 'Title: '+ new Date(), type : "String"},
+			{name : "subtitle1", value : 'Sub title 1', type : "String"},
+			{name : "subtitle2", value : 'Sub title 2', type : "String"}
 		]
 	},
 	{
@@ -16,7 +19,7 @@ var nPrd=nodePrd.createInstance(
 		tmpParentFolder : '.'
 	}
 );
-console.log(nPrd.getVersion());
+console.log('node-prd version: '+nPrd.getVersion());
 console.log('Running report...');
 nPrd.runReport(function(code){
 	if(code==0)
