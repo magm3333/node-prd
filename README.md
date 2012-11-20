@@ -27,32 +27,32 @@ node-prd is a node.js module that allows to execute Pentaho Reports (PRD) from n
     // first parameter: json with information to process report
     // second parameter: configuration environment 
     var nPrd=nodePrd.createInstance(
-   { //Information to process report
-     reportBundlePath: "/home/mariano/report.prpt",
-     outputFilePath: path.resolve("./out/report"),
-     outputType: "excel",
-     htmlFolder:"salidaHtml",
-     params: [
-      {name : "minId", value : 4, type:"Integer"},
-      {name : "title", value : 'Title: '+ new Date(), type : "String"},
-      {name : "subtitle1", value : 'Sub title 1', type : "String"},
-      {name : "subtitle2", value : 'Sub title 2', type : "String"}
-    ]
-   },
-   { // Configuration environment
-    prdHomePath : '/home/mariano/pentaho/prd4',
-    scriptsFolder : '../',
-    tmpParentFolder : '.'
-   }
+        { //Information to process report
+            reportBundlePath: "/home/mariano/report.prpt",
+            outputFilePath: path.resolve("./out/report"),
+            outputType: "excel",
+            htmlFolder:"salidaHtml",
+            params: [
+                {name : "minId", value : 4, type:"Integer"},
+                {name : "title", value : 'Title: '+ new Date(), type : "String"},
+                {name : "subtitle1", value : 'Sub title 1', type : "String"},
+                {name : "subtitle2", value : 'Sub title 2', type : "String"}
+            ]
+        },
+        { // Configuration environment
+            prdHomePath : '/home/mariano/pentaho/prd4',
+            scriptsFolder : '../',
+            tmpParentFolder : '.'
+        }
     );
     // Show module version 
     console.log('node-prd version: '+nPrd.getVersion());
     console.log('Running report...');
     nPrd.runReport(function(code){
-  if(code==0)
-    console.log("Report OK");
-  else
-    console.log("Report ERROR="+code);
+        if(code==0)
+            console.log("Report OK");
+        else
+            console.log("Report ERROR="+code);
     },false,true);
 
 ### Information to process report
