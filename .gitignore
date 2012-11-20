@@ -1,0 +1,14 @@
+*.un~
+
+/node_modules
+
+*.sublime-*
+
+.git
+
+test/tmp
+test/out
+
+out
+tmp
+
