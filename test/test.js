@@ -24,8 +24,7 @@ if (!prdHome || prdHome=='') {
 	process.exit(1);
 } else {
 	try {
-   		stats = fs.lstatSync(prdHome);
-    	if (!stats.isDirectory()) {
+    	if (!dirExists(prdHome)) {
         	console.warn('Value of PRD_HOME not pointing to a directory');
         	console.warn('   Current PRD_HOME value: '+prdHome);
         	process.exit(1);
