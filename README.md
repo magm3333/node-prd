@@ -1,4 +1,8 @@
-# node-prd (by magm) 
+ [![eGluBI.com.ar](http://troyanx.com/eglubi/eglu/img/banner_up.png)](http://eglubi.com.ar)
+ 
+# node-prd (by magm) - eGluBI.com.ar 
+
+http://troyanx.com/eglubi/eglu/img/banner_up.png
  [magm's blog](http://blog.magm.com.ar)
 
  [egluBI web](http://www.eglubi.com.ar)
