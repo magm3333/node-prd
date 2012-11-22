@@ -4,7 +4,7 @@
   "description": "A node.js module, require JRE 1.6 or later, PRD 3.9 or later and is 100% GNU GPLv3 licensed.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",

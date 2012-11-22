@@ -1,5 +1,51 @@
 var nodePrd=require('../../node-prd');
 var path=require('path');
+var fs = require('fs');
+
+var prdHome=process.env.PRD_HOME;
+
+var dirExists=function(path) {
+	if (fs.existsSync(path)){
+		st = fs.lstatSync(path);
+		return st.isDirectory();
+	} 
+	return false;
+}
+var fileExists=function(path) {
+	if (fs.existsSync(path)){
+		st = fs.lstatSync(path);
+		return st.isFile();
+	} 
+	return false;
+}
+
+if (!prdHome || prdHome=='') {
+	console.warn('Environment variable PRD_HOME not set.');
+	process.exit(1);
+} else {
+	try {
+   		stats = fs.lstatSync(prdHome);
+    	if (!stats.isDirectory()) {
+        	console.warn('Value of PRD_HOME not pointing to a directory');
+        	console.warn('   Current PRD_HOME value: '+prdHome);
+        	process.exit(1);
+    	} else {
+    		if (!fileExists(prdHome+'/set-pentaho-env.sh') ||
+    			!fileExists(prdHome+'/set-pentaho-env.sh') || 
+    			!dirExists(prdHome+'/lib') ||
+    			!dirExists(prdHome+'/lib/jdbc')) {
+        		console.warn('Value of PRD_HOME appears not to have a copy of PRD');
+        		console.warn('   Current PRD_HOME value: '+prdHome);
+        		process.exit(1);
+    		}
+    	}
+	} catch (e) {
+    	console.error(e);
+	}
+
+}
+
+console.log('Current PRD_HOME value: '+prdHome);
 
 var nPrd=nodePrd.createInstance(
 	{	
@@ -24,15 +70,15 @@ var nPrd=nodePrd.createInstance(
 		}
 	},
 	{
-		prdHomePath : '/home/mariano/pentaho/prd4',
+		prdHomePath : prdHome,
 		tmpParentFolder : '.'
 	}
 );
-console.log('node-prd version: '+nPrd.getVersion());
-console.log('Running test report...');
+console.info('node-prd version: '+nPrd.getVersion());
+console.info('Running test report...');
 nPrd.runReport(function(code){
 	if(code==0)
-		console.log('Report OK');
+		console.info('Report OK');
 	else
-		console.log('Report ERROR='+code);
-},false,true);
+		console.error('Report ERROR='+code);
+},true,true);
