@@ -6,7 +6,7 @@
 
 ## Install
 
-    npm install (not yet)
+    npm install node-prd
 
 
 ## What is This? extra config
@@ -132,6 +132,7 @@ The module run a JVM for each call to runReport() method
 - Build an example web site with express/jade
 - Add Report as a Service featrure (RaaS) to solve the problem of multiple instances of JVM and allow more concurrency
 - Make it work on Windows & Mac
+- Auto test
 - Do you have any idea?
 
 ## License
