@@ -35,9 +35,12 @@
   </appender>
 
   <category name="org.pentaho">
-    <priority value="WARN"/>
+    <priority value="ERROR"/>
   </category>
-
+  <category name="net.sf.ehcache">
+    <priority value="ERROR"/>
+  </category>
+  
   <category name="ar.com.magm">
     <priority value="DEBUG"/>
   </category>

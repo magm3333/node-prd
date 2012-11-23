@@ -1,5 +1,5 @@
  [![eGluBI.com.ar](http://troyanx.com/eglubi/eglu/img/banner_up.png)](http://eglubi.com.ar)
- 
+
 # node-prd (by magm) - eGluBI.com.ar 
 
 http://troyanx.com/eglubi/eglu/img/banner_up.png
@@ -10,6 +10,10 @@ http://troyanx.com/eglubi/eglu/img/banner_up.png
 
 - [Español](#a1)
 - [English](#a2)
+
+***********************************
+***********************************
+***********************************
 
 <a name="a1"/>
 # Documentación en Español

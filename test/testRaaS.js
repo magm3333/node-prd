@@ -74,10 +74,6 @@ var nPrd=nodePrd.createInstance(
 	}
 );
 console.info('node-prd version: '+nPrd.getVersion());
-console.info('Running test report...');
-nPrd.runReport(function(code){
-	if(code==0)
-		console.info('Report OK');
-	else
-		console.error('Report ERROR='+code);
-},true,true);
+console.info('Starting RaaS Server...');
+nPrd.initRaaS(3333,true,true);
+setTimeout(function() {nPrd.stopRaaS();},5000);

@@ -6,7 +6,7 @@ cd $BASEDIR
 cd ../../
 DIR_NODE_PRD=`pwd`
 
-
+echo "port $1"
 
 if [ -n "$PRD_HOME" ] && [ -d "$PRD_HOME" ] && [ -r "$PRD_HOME" ]; then
     DIR="$PRD_HOME"
@@ -33,16 +33,6 @@ if [ -n "$DIR" ]; then
 	for i in `find "$DIR"/lib/jdbc -type f -name "*.zip"` 
 		do TMP_CLASSPATH=$TMP_CLASSPATH:"$i"
 	done
-
 fi
 #echo $TMP_CLASSPATH
-java -classpath $TMP_CLASSPATH$ ar.com.magm.nodeprd.Main "$1"
-
-RETURN=$? 
-if [ "$RETURN"=="0" ]; then
-	echo "OK"
-else
-	echo "ERROR ($RETURN)"
-fi
-
-exit $RETURN
+java -classpath $TMP_CLASSPATH$ ar.com.magm.nodeprd.Main "startServer" "$1"
