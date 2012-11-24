@@ -115,16 +115,19 @@ Recibe tres parámetros:
 
 ### Reporte como Servicio (RaaS)
 Para soportar alta concurrencia, node-prd implementa RaaS. Consta de 3 pasos:
+
 1) Iniciar el servidor.
-    nPrd.initRaaS(port, logOut, logErr);
+      nPrd.initRaaS(port, logOut, logErr);
 - port: puerto del servidor RaaS
 - logOut: valor booleano que indica si queremos ver la salida estándar.
 - logErr: valor booleano que indica si queremos ver la salida de error.
+
 2) [Configurar](#configurarReporte) y ejecutar reporte.
-    nPrd.runRaaS(cb);
+      nPrd.runRaaS(cb);
 - cb: función de retrollamada que será ejecutada cuando finalice la ejecución del reporte. Recibe como parámetro un objeto JSON que contiene el código y el mensaje con información acerca del resultado de la ejecución. Formato: {code: nnnn, msg:'xxxxx'}, code=0 msg='OK'
+
 3) Detener el servidor cuando no se requiera.
-    nPrd.stopRaaS();
+      nPrd.stopRaaS();
 
 ### Cambio de fuente de datos
 Por defecto, cuando se ejecuta un reporte se utiliza la fuente de datos embebida en el reporte.
@@ -282,16 +285,19 @@ It takes three parameters:
 
 ### Report as a Service (RaaS)
 To support high concurrency, node-prd implements RAAS. Consists of three steps:
+
 1) Start the server.
-    nPrd.initRaaS (port, logout, logErr);
+      nPrd.initRaaS (port, logout, logErr);
 - port: port number for RaaS Server
 - logOut: boolean value indicating if seen the standard output.
 - logErr: boolean value indicating if seen the error output
+
 2) [Configure] (#configureReport) and run report.
-    nPrd.runRaaS (cb);
+      nPrd.runRaaS (cb);
 - cb: callback function that will be executed when ends execution of the report. Receives as a parameter an JSON object that contains the code and message with information about execution result. Format: {code: nnnn, msg:'xxxxx'}, code=0 msg='OK'
+
 3) Stop the server when not required.
-   nPrd.stopRaaS();
+     nPrd.stopRaaS();
 
 ### Change data sources
 By default, when you run a report is used as the data source the embeded data source.
