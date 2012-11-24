@@ -91,17 +91,17 @@ var otherConfig={
 setTimeout(function(args) {
 	nPrd.runRaaS(function(data){
 		if(data.code==0){
-			console.log("End RaaS="+data.msg);
+			console.log("1) End RaaS="+data.msg);
 
 		} else {
-			console.error("End RaaS="+data.msg);
+			console.error("2) End RaaS="+data.msg);
 		}
 		nPrd.setConfig(otherConfig);
 		nPrd.runRaaS(function(data){
 			if(data.code==0){
-				console.log("End RaaS="+data.msg);
+				console.log("2) End RaaS="+data.msg);
 			} else {
-				console.error("End RaaS="+data.msg);
+				console.error("2) End RaaS="+data.msg);
 			}
 		});
 		args[0].stopRaaS();
