@@ -49,7 +49,7 @@ console.log('Current PRD_HOME value: '+prdHome);
 var nPrd=nodePrd.createInstance(
 	{	
 		reportBundlePath:  path.resolve(__dirname+'/report.prpt'),
-		outputFilePath: path.resolve(__dirname+'/out/report'),
+		outputFilePath: path.resolve(__dirname+'/out/reportRasS'),
 		outputType: 'pdf',
 		params: [
 			{name : 'title', value : 'node-prd test', type  : 'String'},
@@ -74,6 +74,16 @@ var nPrd=nodePrd.createInstance(
 	}
 );
 console.info('node-prd version: '+nPrd.getVersion());
-console.info('Starting RaaS Server...');
+
 nPrd.initRaaS(3333,true,true);
-setTimeout(function() {nPrd.stopRaaS();},5000);
+
+setTimeout(function(args) {
+	nPrd.runRaaS(function(data){
+		if(data.code==0){
+			console.log("End RaaS="+data.msg);
+		} else {
+			console.error("End RaaS="+data.msg);
+		}
+		args[0].stopRaaS();
+	});
+},7000,[nPrd]);

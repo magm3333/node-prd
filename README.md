@@ -72,7 +72,7 @@ Es muy simple, primero se configura y luego se ejecuta el reporte.
             console.log("Report ERROR="+code);
     },false,true);
 
-
+<a name="configurarReporte"/>
 ### Información para procesar el reporte
 
 - reportBundlePath (obligatorio): es la localización del paquete que contiene el reporte PRD.
@@ -109,6 +109,19 @@ Recibe tres parámetros:
 - cb: función de retrollamada que será ejecutada cuando finalice la ejecución del reporte. Recibe como parámetro un número entero (code) que contiene el ERROR_LEVEL, si es igual 0 el reporte se ha generado, caso contrario hubo un error.
 - logOut: valor booleano que indica si queremos ver la salida estándar.
 - logErr: valor booleano que indica si queremos ver la salida de error.
+
+### Reporte como Servicio (RaaS)
+Para soportar alta concurrencia, node-prd implementa RaaS. Consta de 3 pasos:
+1) Iniciar el servidor.
+    nPrd.initRaaS(port, logOut, logErr);
+- port: puerto del servidor RaaS
+- logOut: valor booleano que indica si queremos ver la salida estándar.
+- logErr: valor booleano que indica si queremos ver la salida de error.
+2) [Configurar](#configurarReporte) y ejecutar reporte.
+    nPrd.runRaaS(cb);
+- cb: función de retrollamada que será ejecutada cuando finalice la ejecución del reporte. Recibe como parámetro un objeto JSON que contiene el código y el mensaje con información acerca del resultado de la ejecución. Formato: {code: nnnn, msg:'xxxxx'}, code=0 msg='OK'
+3) Detener el servidor cuando no se requiera.
+    nPrd.stopRaaS();
 
 ### Cambio de fuente de datos
 Por defecto, cuando se ejecuta un reporte se utiliza la fuente de datos embebida en el reporte.
@@ -148,14 +161,10 @@ type: el tipo de fuente de datos a implementar. Los valores posibles son: NamedS
 ### Requieres más controladores JDBC?
 Si requieres un nuevo controlador JDBC para una fuente de datos, solo hayq que descargar el driver JDBC y colocarlo en la carpeta [PRD_HOME]/lib/jdbc.
 
-## Precaución: 
-El módulo ejecuta una JVM por cada llamada al método runReport()
-
 
 ## TODO
 - Implementar: SQLReportDataFactory, XPathDataFactory, KettleDataFactory y BandedMDXDataFactory
 - Crear un sitio web de ejemplo con express/jade
-- Agregar la característica de Reporte como Servicio (RaaS) para solucionar el problema de múltiples instancias de la JVM y aumentar la concurrencia.
 - Hacer que funcione en Windows & Mac
 - Agregar más tipos de parámetros (StringList, etc)
 - Auto test
@@ -227,7 +236,7 @@ It is very simple, in first place set the configuration and later run the report
         else
             console.log("Report ERROR="+code);
     },false,true);
-
+<a name="configureReport"/>
 ### Information to process report
 
 - reportBundlePath (mandatory): is the location of PRD defintion bundle.
@@ -261,9 +270,22 @@ It is very simple, in first place set the configuration and later run the report
 
 ### Method runReport (cb, logOut, logErr)
 It takes three parameters:
-- Cb: callback function that will be executed when ends execution of the report. Receives as a parameter an integer (code) that contains the ERROR_LEVEL, if equals 0 the report has been generated, otherwise an error code.
+- cb: callback function that will be executed when ends execution of the report. Receives as a parameter an integer (code) that contains the ERROR_LEVEL, if equals 0 the report has been generated, otherwise an error code.
 - logOut: boolean value indicating if seen the standard output.
 - logErr: boolean value indicating if seen the error output
+
+### Report as a Service (RaaS)
+To support high concurrency, node-prd implements RAAS. Consists of three steps:
+1) Start the server.
+    nPrd.initRaaS (port, logout, logErr);
+- port: port number for RaaS Server
+- logOut: boolean value indicating if seen the standard output.
+- logErr: boolean value indicating if seen the error output
+2) [Configure] (#configureReport) and run report.
+    nPrd.runRaaS (cb);
+- cb: callback function that will be executed when ends execution of the report. Receives as a parameter an JSON object that contains the code and message with information about execution result. Format: {code: nnnn, msg:'xxxxx'}, code=0 msg='OK'
+3) Stop the server when not required.
+   nPrd.stopRaaS();
 
 ### Change data sources
 By default, when you run a report is used as the data source the embeded data source.
@@ -303,14 +325,10 @@ type: the type of data source to implement. Possible values are: NamedStatic, Sq
 ### Need more JDBC Drivers?
 If you need a new JDBC driver for one data source, simply download JDBC driver and put it in the folder [PRD_HOME]/lib/jdbc.
 
-## Caution: 
-The module run a JVM for each call to runReport() method
-
 
 ## TODO
 - Implement: SQLReportDataFactory, XPathDataFactory, KettleDataFactory and BandedMDXDataFactory
 - Build an example web site with express/jade
-- Add Report as a Service featrure (RaaS) to solve the problem of multiple instances of JVM and allow more concurrency
 - Make it work on Windows & Mac
 - Add more parameter types (StringList, etc)
 - Auto test

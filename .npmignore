@@ -3,5 +3,12 @@
 /node_modules
 
 *.sublime-*
+shutdown.sh
 
-/.git
+.git
+
+test/tmp
+test/out
+
+out
+tmp

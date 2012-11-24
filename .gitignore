@@ -3,6 +3,7 @@
 /node_modules
 
 *.sublime-*
+shutdown.sh
 
 .git
 
