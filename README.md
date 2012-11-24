@@ -99,6 +99,9 @@ Es muy simple, primero se configura y luego se ejecuta el reporte.
   - type: el tipo de datos del parámetro. Los valores posibles son: Integer, Long, Double, Float, Date y String por ahora.
     Los valores numéricos no van entrecomillados y el separador decimal debe ser un punto y no una coma, los valores Date deben tener formto  unix timestamp
 
+### La configuración para procesar el reporte:
+- puede cambiarse llamando al método setConfig(otherConfig) 
+- u obtenerse con el método getConfig()
 
 ### Configuración de entorno
 - prdHomePath (opcional): es path al home (carpeta en la cual está instalado) de Pentaho Report Designer. Si no se especifica, el módulo intentará obtener el valor de la variable de entorno llamada PRD_HOME. Una de las dos (el parámetro o la variable de entorno) se debe establecer. 
@@ -263,6 +266,9 @@ It is very simple, in first place set the configuration and later run the report
   - type: the data type of parameter. Possible values are: Integer, Long, Double, Float, Date and String for now.
     Numeric values are not quoted and decimal separator must be a point, not an comma, Date value must be unix      timestamp format
 
+### The configuration to process report:
+- Can be changed by calling setConfig(otherConfig)
+- Or obtained with the method getConfig()
 
 ### Configuration environment 
 - prdHomePath (optional): is the path to Pentaho Report Designer Home. If not specified, module try to use the environment variable named PRD_HOME. One of two (the parameter or the environment variable) must be set 

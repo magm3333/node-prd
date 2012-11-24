@@ -77,13 +77,34 @@ console.info('node-prd version: '+nPrd.getVersion());
 
 nPrd.initRaaS(3333,true,true);
 
+var otherConfig={	
+		reportBundlePath:  path.resolve(__dirname+'/report.prpt'),
+		outputFilePath: path.resolve(__dirname+'/out/reportRasS1'),
+		outputType: 'rtf',
+		params: [
+			{name : 'title', value : 'node-prd test', type  : 'String'},
+			{name : 'subtitle1', value : 'NamedStatic Data Factory', type : 'String'},
+			{name : 'subtitle2', value :  'Time: '+ new Date(), type : 'String'}
+		]
+	};
+
 setTimeout(function(args) {
 	nPrd.runRaaS(function(data){
 		if(data.code==0){
 			console.log("End RaaS="+data.msg);
+
 		} else {
 			console.error("End RaaS="+data.msg);
 		}
+		nPrd.setConfig(otherConfig);
+		nPrd.runRaaS(function(data){
+			if(data.code==0){
+				console.log("End RaaS="+data.msg);
+			} else {
+				console.error("End RaaS="+data.msg);
+			}
+		});
 		args[0].stopRaaS();
 	});
 },7000,[nPrd]);
+
