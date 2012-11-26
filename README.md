@@ -169,6 +169,24 @@ type: el tipo de fuente de datos a implementar. Los valores posibles son: NamedS
 - columnTypes: contiene los tipos de datos para cada una d elas columnas definidas en columnNames.
 - data: arreglo bi-dimensional conteniendo los datos.
 
+#### Sql: permite definir los datos de la conexión JDBC y la consulta SQL.
+
+  Ejemplo de configuración:
+
+      "dataFactory" : {
+          "type" : "Sql",
+          "jdbcConfig" : {
+              "driver" : "com.mysql.jdbc.Driver",
+              "url" : "jdbc:mysql://localhost:3306/practico",
+              "user" : "root",
+              "password" : "root"   
+          },
+          "query" : "SELECT idZona, Zona FROM Zonas WHERE idZona<=${minId}"
+      }
+
+- jdbcConfig: es un objeto json que contiene los 4 atributos necesarios para establecer una conexión JDBC
+- query: consulta SQL que puede contener parámetros en la forma ${paramName}.
+
 ### Requieres más controladores JDBC?
 Si requieres un nuevo controlador JDBC para una fuente de datos, solo hayq que descargar el driver JDBC y colocarlo en la carpeta [PRD_HOME]/lib/jdbc.
 
@@ -293,15 +311,15 @@ To support high concurrency, node-prd implements RAAS. Consists of three steps:
 
 1) Start the server.
 
-        nPrd.initRaaS (port, logout, logErr);
-        
+        nPrd.initRaaS(port, logout, logErr);
+
 - port: port number for RaaS Server
 - logOut: boolean value indicating if seen the standard output.
 - logErr: boolean value indicating if seen the error output
 
 2) [Configure] (#configureReport) and run report.
 
-        nPrd.runRaaS (cb);
+        nPrd.runRaaS(cb);
 
 - cb: callback function that will be executed when ends execution of the report. Receives as a parameter an JSON object that contains the code and message with information about execution result. Format: {code: nnnn, msg:'xxxxx'}, code=0 msg='OK'
 
@@ -343,6 +361,24 @@ type: the type of data source to implement. Possible values are: NamedStatic, Sq
 - columnNames: Array that contains the names of the columns. Please note that the names are defined exactly as defined in the report. The number of defined columns here, define the number of columns in the data.
 - columnTypes: contains data type for each of columns defined in columnNames.
 - data: a two-dimensional array containing data.
+
+#### Sql: permite definir los datos de la conexión JDBC y la consulta SQL.
+
+  Ejemplo de configuración:
+
+      "dataFactory" : {
+          "type" : "Sql",
+          "jdbcConfig" : {
+              "driver" : "com.mysql.jdbc.Driver",
+              "url" : "jdbc:mysql://localhost:3306/practico",
+              "user" : "root",
+              "password" : "root"   
+          },
+          "query" : "SELECT idZona, Zona FROM Zonas WHERE idZona<=${minId}"
+      }
+
+- jdbcConfig: es un objeto json que contiene los 4 atributos necesarios para establecer una conexión JDBC.
+- query: consulta SQL que puede contener parámetros en la forma ${paramName}.
 
 ### Need more JDBC Drivers?
 If you need a new JDBC driver for one data source, simply download JDBC driver and put it in the folder [PRD_HOME]/lib/jdbc.
