@@ -32,6 +32,7 @@ node-prd es un módulo node.js que permite ejecutar reportes Pentaho (PRD) desde
 - Java Development Kit (JDK) 1.6 o posterior
 - Pentaho Report Designer 3.9 o 4.0
 - Linux, Windows (no disponible aún) o MacOS (no disponible aún)
+- Variable de entorno PRD_HOME apuntando a la carpeta de PRD
 
 
 ## Cómo se utiliza?
@@ -192,7 +193,7 @@ Si requieres un nuevo controlador JDBC para una fuente de datos, solo hayq que d
 
 
 ## TODO
-- Implementar: SQLReportDataFactory, XPathDataFactory, KettleDataFactory y BandedMDXDataFactory
+- Implementar: XPathDataFactory, KettleDataFactory y BandedMDXDataFactory
 - Crear un sitio web de ejemplo con express/jade
 - Hacer que funcione en Windows & Mac
 - Agregar más tipos de parámetros (StringList, etc)
@@ -227,6 +228,7 @@ node-prd is a node.js module that allows to execute Pentaho Reports (PRD) from n
 - Java Development Kit (JDK) 1.6 or later
 - Pentaho Report Designer 3.9 or 4.0
 - Linux, Windows (not yet available) or MacOS (not yet available)
+- Environment variable PRD_HOME pointing to folder of PRD
 
 
 ## How to use
@@ -385,7 +387,7 @@ If you need a new JDBC driver for one data source, simply download JDBC driver a
 
 
 ## TODO
-- Implement: SQLReportDataFactory, XPathDataFactory, KettleDataFactory and BandedMDXDataFactory
+- Implement: XPathDataFactory, KettleDataFactory and BandedMDXDataFactory
 - Build an example web site with express/jade
 - Make it work on Windows & Mac
 - Add more parameter types (StringList, etc)
