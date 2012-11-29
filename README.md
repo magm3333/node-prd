@@ -17,6 +17,8 @@
 <a name="a1"/>
 # Documentación en Español
 
+## [Una buena demostración aquí.](https://github.com/magm3333/node-prd-web-example)
+
 ## Instalación
 
     npm install node-prd
@@ -212,6 +214,8 @@ node-prd es 100% GNU GPLv3
 <a name="a2"/>
 
 # English documentation
+
+## [Great demo here](https://github.com/magm3333/node-prd-web-example)
 
 ## Install
 
