@@ -85,7 +85,18 @@ var otherConfig={
 			{name : 'title', value : 'node-prd test', type  : 'String'},
 			{name : 'subtitle1', value : 'NamedStatic Data Factory', type : 'String'},
 			{name : 'subtitle2', value :  'Time: '+ new Date(), type : 'String'}
-		]
+		],
+		dataFactory : {
+			type : 'NamedStatic',
+			columnNames : ['idZona','Zona'],
+			columnTypes : ['Integer','String'],
+			data : [
+				[11,'other east'],
+				[21,'other west'],
+				[31,'other north'],
+				[41,'other south']
+			]
+		}
 	};
 
 setTimeout(function(args) {
